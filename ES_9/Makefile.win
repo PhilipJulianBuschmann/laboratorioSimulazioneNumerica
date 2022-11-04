@@ -1,0 +1,14 @@
+main: main.o random.o G_A.o main.hpp random.h ga.hpp
+	g++ main.o random.o G_A.o -o main
+main.o: main.cpp random.cpp ga.cpp main.hpp random.h ga.hpp
+	g++ -c main.cpp -o main.o
+
+random.o: random.cpp random.h
+	g++ -c random.cpp -o random.o
+
+ga.o: G_A.cpp G_A.h random.h
+	g++ -c G_A.cpp -o G_A.o
+
+clean:
+	rm *.o fitness.dat population.dat
+
